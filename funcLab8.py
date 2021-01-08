@@ -30,3 +30,8 @@ def print_triangle_withdeco(n,d="%"):
 
 print_triangle_withdeco(6,)
 print_triangle_withdeco(5, "*")
+
+# def print_triangle_withdeco(n,d="%"):
+#     if 1 <= n <= 10:
+#        for i in range(1,n+1):
+#            print(' '*(n-i), d*i)
