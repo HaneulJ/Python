@@ -11,8 +11,14 @@
 
 def sumAll(*i):
     sum = 0
-    if str(type(sumAll)) == "<class 'int'>":
-        sum += i
-    else: return None
+    count = 0
+    for x in i:
+        if type(x) == int:
+            count += 1
+            sum += x
+    if len(i) == 0 or count == 0:
+        sum = None
+    return sum
 
 print(sumAll(5,"a","h",9))
+print(sumAll())
