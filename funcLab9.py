@@ -8,11 +8,10 @@
          아규먼트가 전달되지 않으면 -1을 리턴한다.
 """
 def sumEven1(*n):
-    for n in range(1,):
-        sum = 0
-        if n % 2 ==0:
-            sum += n
-            return sum
-        else: return 0
-    if n in None:
-        return -1
+    sum = 0
+    for x in n:
+        if x % 2 ==0:
+            sum += x
+    if len(n) == 0:
+        sum = -1
+    return sum
