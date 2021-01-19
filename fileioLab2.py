@@ -6,19 +6,19 @@ sample_yyyy_mm_dd.txt 파일에 계속 추가되게 한다.
 위의 내용을 파일에 저장하는 기능이 정상적으로 수행되면 화면에 “저장이 완료되었습니다.”
 FileNotFoundError 발생시 FileNotFoundError 에 대한 메시지 정보를 출력하고 종료한다.
 """
-import shutil
-f = open("sample.txt", "rt", encoding="utf8")
-text = f.read()
-print(text)
-f.close()
+import time
+now=time.localtime()
 
-shutil.copy("sample.txt","sample_2021_01_18.txt")
 try:
-    s = open("sample.txt", "at", encoding="utf8")
-    s.write("\n\n [추가]")
-    print("저장이 완료되었습니다.")
+    fr=open("sample.txt","rt", encoding="utf-8")
+
+    file_name = f"sample_{now.tm_year}_{now.tm_mon:02d}_{now.tm_mday:02d}.txt"
+    f = open(file_name, "at", encoding="utf-8")
+
+    for line in fr:         #
+        f.write(line)
+
+    fr.close()
+    f.close()
 except FileNotFoundError:
     print("파일이 없습니다.")
-finally:
-    if s :
-        s.close()
