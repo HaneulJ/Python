@@ -7,12 +7,32 @@
 """
 import calendar
 while True:
-    year = input("연도를 입력하세요:")
-    month = input("월을 입력하세요:")
+    year = int(input("연도를 입력하세요:"))
+    month = int(input("월을 입력하세요:"))
     try:
         y = int(year)
         m = int(month)
-        print(calendar.prmonth(y,m))
+        print(calendar.month(y,m))
         break
     except ValueError as e:
         print("다시 입력하세요!")
+
+# 입력할 때마다 확인해야 한다면
+    try:
+        year = int(input("연도를 입력하세요:"))
+        month = int(input("월을 입력하세요:"))
+        print(calendar.month(year,month))
+        break
+    except ValueError as e:
+        print("다시 입력하세요!")
+
+# 1~12사이에 월이 있어야 하니까 지정 할 때는
+    try:
+        if month not in range(1,13):
+            raise ValueError("1~12사의 숫자를 입력하세요")
+        if year < 0:
+            raise ValueError("양의 값으로 입력하세요")
+        break
+    except ValueError as v:
+        print("다시 입력하세요")
+print(calendar.month(year,month))
