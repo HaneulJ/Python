@@ -6,14 +6,15 @@ FileNotFoundError 발생시 파일을 읽을 수 없어요 를 출력하고 종�
 에러 발생 여부와 관계없이 수행완료!! 를 출력하고 종료한다.
 (try-except-else-finally 를 모두 사용해서 해결한다.)
 """
-f =  open("yesterday.txt", "rt", encoding="UTF-8")
+f =  None # 필수적으로 f를 정의해야 함
 try:
+    f = open("yesterday.txt", "rt", encoding="UTF-8")
     text = f.read().lower()
-    print(text.count("yesterday"))
 except FileNotFoundError:
     print("파일을 읽을 수 없어요")
 else:
-    print("Number of a Word 'Yesterday' X")
+    print("Number of a Word 'Yesterday':",text.count("yesterday"))
 finally:
     print("수행완료!!")
-    f.close()
+    if f:
+        f.close()
